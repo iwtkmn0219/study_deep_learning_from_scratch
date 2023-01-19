@@ -7,8 +7,11 @@ def step_function(x: np.ndarray) -> np.ndarray:
     return y.astype(np.int)
 
 
+def sigmoid(x: np.ndarray) -> np.ndarray:
+    return 1 / (1 + np.exp(-x))
+
+
 x = np.arange(-5, 5, 0.1)
-y = step_function(x)
-plt.plot(x, y)
+plt.plot(x, step_function(x), x, sigmoid(x))
 plt.ylim(-0.1, 1.1)
 plt.show()
