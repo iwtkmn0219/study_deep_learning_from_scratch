@@ -28,7 +28,6 @@ def init_network() -> dict:
         "W3": np.array([[0.1, 0.3], [0.2, 0.4]]),
         "B3": np.array([0.1, 0.2]),
     }
-
     return network
 
 
@@ -42,7 +41,6 @@ def forward(network: dict, x: np.ndarray) -> np.ndarray:
     Z2 = sigmoid(A2)
     A3 = np.dot(Z2, W3) + B3
     Y = identity_function(A3)
-
     return Y
 
 
@@ -50,3 +48,9 @@ network = init_network()
 X = np.array([1.0, 0.5])
 Y = forward(network, X)
 print(Y)
+
+
+def softmax(a: np.ndarray) -> np.ndarray:
+    c = np.max(a)
+    exp_a = np.exp(a - c)
+    return exp_a / np.sum(exp_a)
